@@ -7,15 +7,13 @@
 const pairSum = (numbers, targetSum) => {
   // todo
   // iterate numbers
+  let returnMe;
   numbers.forEach((num1, i, nums) => {
     nums.slice(i+1).forEach((num2, j) => {
       if ((num1 + num2) === targetSum) {
-        return [i, (i +j + 1)]
+        returnMe = [i, (i + j + 1)];
       }
-    })
-  })
-    // iterate every number after current number
-    // if both numbers sum to target
-      // return array of indices
-
+    });
+  });
+  return returnMe
 };
