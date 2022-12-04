@@ -1,1 +1,3 @@
 # algorithms
+
+daily algorithm work
