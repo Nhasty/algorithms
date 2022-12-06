@@ -21,4 +21,7 @@ const getNodeValue = (head, index) => {
 
 const getNodeValue = (head, index) => {
   // todo
+  if (head === null) return null;
+  if (index === 0) return head.val;
+  return getNodeValue(head.next, index - 1);
 };
