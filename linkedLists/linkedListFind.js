@@ -6,7 +6,7 @@ const linkedListFind = (head, target) => {
   // todo
   let current = head;
   while (current !== null) {
-    if (head.val === target) return true;
+    if (current.val === target) return true;
     current = current.next;
   }
   return false;
@@ -16,5 +16,7 @@ const linkedListFind = (head, target) => {
 
 const linkedListFind = (head, target) => {
   // todo
-
+  if (head === null) return false;
+  if (head.val === target) return true;
+  return linkedListFind(head.next, target);
 };
