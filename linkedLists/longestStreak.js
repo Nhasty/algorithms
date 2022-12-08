@@ -8,7 +8,7 @@ const longestStreak = (head) => {
   let prevVal = null
   let count = 0;
   let maxCount = 0;
-  while (head !== null) {
+  while (current !== null) {
     if (current.val === prevVal) {
       count += 1;
     } else {
