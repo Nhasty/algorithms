@@ -14,3 +14,37 @@ const hasPath = (graph, src, dst) => {
   }
   return false
 };
+
+// df iterative
+
+const hasPath = (graph, src, dst) => {
+  // todo
+  const stack = [src];
+  while (stack.length) {
+    const current = stack.pop();
+    if (graph[current] === graph[dst]) {
+      return true;
+    }
+    for (let neighbor of graph[current]) {
+      stack.push(neighbor);
+    }
+   }
+   return false;
+}
+
+//bf iterative
+
+const hasPath = (graph, src, dst) => {
+  // todo
+  const q = [src];
+  while (q.length) {
+    const current = q.shift();
+    if (graph[current] === graph[dst]) {
+      return true;
+    }
+    for (let neighbor of graph[current]) {
+      q.push(neighbor);
+    }
+  }
+  return false;
+}
