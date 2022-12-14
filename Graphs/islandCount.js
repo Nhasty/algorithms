@@ -1,11 +1,11 @@
 // Write a function, islandCount, that takes in a grid containing Ws and Ls. W represents water and L represents land. The function should return the number of islands on the grid. An island is a vertically or horizontally connected region of land.
 
+//df iter
 
 const islandCount = (grid) => {
   // todo
   const visited = new Set();
   let count = 0;
-  debugger
   grid.forEach((row, rowIndex, rows) => {
     row.forEach((col, colIndex, rowArray) => {
       const indices = [rowIndex, colIndex];
@@ -33,4 +33,41 @@ const islandCount = (grid) => {
     });
   });
   return count;
+};
+
+// df recursive
+
+const islandCount = (grid) => {
+  let count = 0;
+  const visited = new Set();
+  grid.forEach((row, rowIndex, rows) => {
+    rows.forEach((col, colIndex) => {
+      if (explore(rows, rowIndex, colIndex, visited)) {
+        count += 1;
+      }
+    })
+  })
+  return count;
+}
+
+const explore = (grid, r, c, visited) => {
+  if (r < 0 || r >= grid.length) {
+    return false;
+  }
+  if ( c < 0 || c >= grid[0].length) {
+    return false;
+  }
+  if (grid[r][c] === 'W') {
+    return false;
+  }
+  const indices = `${r},${c}`
+  if (visited.has(indices)) {
+    return false;
+  }
+  visited.add(indices);
+  explore(grid, r, c + 1, visited);
+  explore(grid, r + 1, c, visited);
+  explore(grid, r, c - 1, visited);
+  explore(grid, r - 1, c, visited);
+  return true;
 };
