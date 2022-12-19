@@ -15,7 +15,7 @@ const minChange = (amount, coins, memo = {}) => {
   }
   let min = Infinity;
   for (let coin of coins) {
-    const coinsUsed = minChange(amount - coin, coins);
+    const coinsUsed = minChange(amount - coin, coins, memo);
     if (coinsUsed < min && coinsUsed >= 0) {
       min = coinsUsed;
     }
