@@ -7,14 +7,18 @@ const parentheticalPossibilities = (s) => {
   if (!s.length) {
     return [''];
   }
-  const choices = getChoices(s);
+  const allPossibilities = []
+  const {choices, remainder} = getChoices(s);
   for (let choice of choices) {
-    parentheticalPossibilities()
+    const remainderPossibilites = parentheticalPossibilities(remainder);
+    for (let remains of remainderPossibilites) {
+      allPossibilities.push(choice + remains)
+    }
   }
-
+  return allPossibilities;
 };
 
-const getChoices(s) = (s) => {
+const getChoices = (s) => {
   if (s[0] === '(') {
     const end = s.indexOf(')');
     const choices = s.slice(1, end);
