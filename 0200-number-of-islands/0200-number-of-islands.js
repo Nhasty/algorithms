@@ -10,9 +10,8 @@ var numIslands = function(grid) {
   let islandCoordinates = new Set();
   for (let i = 0; i < grid.length; i += 1) {
     for (let j = 0; j < grid[0].length; j += 1) {
-      if (grid[i][j] === '1' && !(islandCoordinates.has(i + ',' + j))) {
-        islandsCount += 1;
-        exploreIsland(i, j, grid, islandCoordinates);
+      if (exploreIsland(i, j, grid, islandCoordinates)) {
+        islandsCount += 1;  
       }
     }
   }
@@ -22,11 +21,12 @@ var numIslands = function(grid) {
 const exploreIsland = (i, j, grid, explored) => {
   const index = i + ','  + j;
   if (explored.has(index) || i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] === '0') {
-    return;
+    return false;
   }
   explored.add(index);
   exploreIsland(i + 1, j, grid, explored);
   exploreIsland(i - 1, j, grid, explored);
   exploreIsland(i, j + 1, grid, explored);
   exploreIsland(i, j - 1, grid, explored);
+  return true;
 }
