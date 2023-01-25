@@ -27,15 +27,11 @@ var pacificAtlantic = function(heights) {
   }
   for (let i = 0; i < w; i += 1) {
     flows(i, 0, 0, pacific);
-  }
-  for (let i = 0; i < h; i += 1) {
-    flows(0, i, 0, pacific);
-  }
-  for (let i = 0; i < w; i += 1) {
     flows(i, h - 1, 0, atlantic);
   }
   for (let i = 0; i < h; i += 1) {
-    flows(w - 1, i, 0, atlantic);;
+    flows(0, i, 0, pacific);
+    flows(w - 1, i, 0, atlantic);
   }
   
   const highPoints = [];
