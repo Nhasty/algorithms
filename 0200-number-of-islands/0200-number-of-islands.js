@@ -10,8 +10,7 @@ var numIslands = function(grid) {
   let islandCoordinates = new Set();
   for (let i = 0; i < grid.length; i += 1) {
     for (let j = 0; j < grid[0].length; j += 1) {
-      const index = i + ',' + j;
-      if (grid[i][j] === '1' && !(islandCoordinates.has(index))) {
+      if (grid[i][j] === '1' && !(islandCoordinates.has(i + ',' + j))) {
         islandsCount += 1;
         exploreIsland(i, j, grid, islandCoordinates);
       }
