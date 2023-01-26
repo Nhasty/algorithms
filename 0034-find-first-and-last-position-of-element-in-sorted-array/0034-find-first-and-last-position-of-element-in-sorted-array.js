@@ -4,7 +4,6 @@
  * @return {number[]}
  */
 var searchRange = function(nums, target) {
-  debugger;
   let i = 0;
   let j = nums.length - 1;
   let lowerBound = -1;
@@ -22,7 +21,6 @@ var searchRange = function(nums, target) {
     }
   
   if (i <= j) {
-    const currentMP = Math.floor((i + j) / 2);
     lowerBound = findLowerBound(nums, i, j - 1, target);
     upperBound = findUpperBound(nums, i + 1, j, target); 
   }
