@@ -8,7 +8,7 @@ var searchRange = function(nums, target) {
   let j = nums.length - 1;
   let lowerBound = -1;
   let upperBound = -1;
-  while (i <= j) {
+  while (i <= j && nums[i] !== target && nums[j] !== target) {
     const mp = Math.floor((i + j) / 2);
     const val = nums[mp];
     if (val < target) {
