@@ -11,17 +11,22 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-  const q = [[root, 0]];
   const ordered = [];
+    if (root === null) {
+    return ordered
+  }
+  const q = [[root, 0]];
   while (q.length) {
     const [current, level] = q.shift();
-    if (current !== null) {
-      if (level === ordered.length) {
-        ordered.push([]);
-      }
-      ordered[level].push(current.val);
-      q.push([current.left, level + 1]);
-      q.push([current.right, level + 1])
+    if (level === ordered.length) {
+      ordered.push([]);
+    }
+    ordered[level].push(current.val);
+    if (current.left !== null) {
+     q.push([current.left, level + 1]); 
+    }
+    if (current.right !== null) {
+      q.push([current.right, level + 1]) ;
     }
   }
   return ordered;
