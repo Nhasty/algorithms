@@ -8,7 +8,7 @@ var peakIndexInMountainArray = function(arr) {
   while (i <= j) {
     const mp = Math.floor((i + j) / 2);
     const val = arr[mp];
-    if (mp - 1 === -1 || arr[mp - 1] < arr[mp]) {
+    if (mp === 0 || arr[mp - 1] < arr[mp]) {
       if (arr[mp + 1] <  arr[mp]) {
        return mp; 
       }
