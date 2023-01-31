@@ -20,9 +20,11 @@ const countChange = (coins, amount, memo) => {
   }
   let min = Infinity
   for (let coin of coins) {
-    const change = 1 + countChange(coins, amount - coin, memo);
-    min = Math.min(change, min)
+    const change = countChange(coins, amount - coin, memo);
+    if (change >= 0) {
+      min = Math.min(1 + change, min)
+    } 
   };
-  memo[amount] = min;
+  memo[amount] = min !== Infinity ? min : -1;
   return memo[amount];
 }
