@@ -3,14 +3,6 @@
  * @return {number}
  */
 var slidingPuzzle = function(board) {
-  const distances = [
-                      [3, 2, 1, 3, 1, 0],
-                      [0, 1, 2, 1, 2, 3],
-                      [1, 0, 1, 2, 1, 2],
-                      [2, 1, 0, 3, 2, 1],
-                      [1, 2, 3, 0, 1, 2],
-                      [2, 1, 2, 1, 0, 1],
-                    ];
   const moves = {
     0: [1, 3],
     1: [0, 2, 4],
@@ -37,13 +29,11 @@ var slidingPuzzle = function(board) {
     }
     for (let move of moves[zero]) {
       const next = movePieces(current, zero, move);
-      const score = next.split('').reduce((memo, number, index) => memo + distances[number][index], 0)
       if (!iterations.has(next)) {
-        q.push([next, move, moveCount + 1, moveCount + 1 + score]);
+        q.push([next, move, moveCount + 1]);
         iterations.add(next)
       }
     }
-    q.sort((a, b) => a[3] - b[3]);
   }
   return -1   
 };
