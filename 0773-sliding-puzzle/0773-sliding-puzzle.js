@@ -3,7 +3,6 @@
  * @return {number}
  */
 var slidingPuzzle = function(board) {
-debugger
   const distances = [
                       [3, 2, 1, 3, 1, 0],
                       [0, 1, 2, 1, 2, 3],
