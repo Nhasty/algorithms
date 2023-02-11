@@ -11,7 +11,6 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2, remainder = 0) {
-  debugger
   if (l1 === null && l2 === null) {
     return remainder ? new ListNode(1): null;
   }
