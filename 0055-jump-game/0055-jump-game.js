@@ -3,19 +3,14 @@
  * @return {boolean}
  */
 var canJump = function(nums) {
-  let stack = [0];
-  const visited = new Set([0]);
-  while (stack.length) {
-    const index = stack.pop();
-    if (index >= nums.length - 1) {
-      return true;
+  let max = 0;
+  for (let i = 0; i < nums.length; i += 1) {
+    if (i > max) {
+      return false;
     }
-    for (let i = 1; i <= nums[index]; i += 1) {
-      if (!(visited.has(index + i))) {
-        stack.push(index + i);
-        visited.add(index + i);
-      }
+    if (max >= nums.length - 1) {
+      return true
     }
+    max = Math.max(max, i + nums[i]);
   }
-  return false;
 };
