@@ -21,10 +21,7 @@ var maxPathSum = function(root) {
     const rightMax = checkPaths(node.right);
     const newPath = leftMax + rightMax + node.val;
     const oldPath = node.val + Math.max(leftMax, rightMax, 0);
-    if (newPath > oldPath) {
-      maxPath = Math.max(maxPath, newPath);
-    }
-    maxPath = Math.max(maxPath, oldPath);
+    maxPath = Math.max(maxPath, oldPath, newPath);
     return oldPath;
   }
   checkPaths(root);
