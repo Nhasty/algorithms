@@ -4,38 +4,26 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
-  let highs = Array(k);
-  let counts = Array(k).fill(0);
-  let count = 0;
-  nums.sort((a, b) => a - b);
-  let current = nums[0];
+  const map = {};
   for (let num of nums) {
-    if (current === num) {
-      count += 1;
-    } else {
-      for (let i = 0; i < k; i+= 1) {
-        if (count >= counts[i]) {
-          const temp = highs[i];
-          const tempCount = counts[i];
-          highs[i] = current;
-          counts[i] = count;
-          count = tempCount;
-          current = temp;
-        }
-      }
-      current = num;
-      count = 1;
+    if (!(num in map)) {
+      map[num] = 0;
+    }
+    map[num] += 1;
+  }
+  const counts = Array(nums.length + 1);
+  for (let num in map) {
+    if (!counts[map[num]]) {
+      counts[map[num]] = [];
+    }
+    counts[map[num]].push(num);
+  }
+  const solution = [];
+  for (let i = nums.length + 1; i >= 0; i -= 1) {
+    while (counts[i] && counts[i].length && solution.length < k) {
+      solution.push(counts[i].pop())
+      
     }
   }
-  for (let i = 0; i < k; i+= 1) {
-    if (count >= counts[i]) {
-      const temp = highs[i];
-      const tempCount = counts[i];
-      highs[i] = current;
-      counts[i] = count;
-      count = tempCount;
-      current = temp;
-    }
-  }
-  return highs;
+  return solution;
 };
