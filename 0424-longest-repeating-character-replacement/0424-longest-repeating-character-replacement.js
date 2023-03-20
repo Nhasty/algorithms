@@ -12,7 +12,7 @@ var characterReplacement = function(s, k) {
     count[s.charCodeAt(right) - 'A'.charCodeAt()] += 1;
     right += 1;
     const high = Math.max(...count);
-    const visited = count.reduce((a, b) => a + b, 0);
+    const visited = right - left;
     if (visited - high > k) {
       count[s.charCodeAt(left) - 'A'.charCodeAt()] -= 1;
       left += 1;
