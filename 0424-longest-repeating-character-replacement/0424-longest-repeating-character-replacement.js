@@ -4,14 +4,15 @@
  * @return {number}
  */
 var characterReplacement = function(s, k) {
-  let max = 0;
+  let high = 0
   let count = Array(26).fill(0);
   let left = 0;
   let right = 0;
   while (right < s.length) {
-    count[s.charCodeAt(right) - 'A'.charCodeAt()] += 1;
+    const ascii = s.charCodeAt(right) - 'A'.charCodeAt()
+    count[ascii] += 1;
     right += 1;
-    const high = Math.max(...count);
+    high = count[ascii] > high ? count[ascii] : high;
     if (right - left - high > k) {
       count[s.charCodeAt(left) - 'A'.charCodeAt()] -= 1;
       left += 1;
