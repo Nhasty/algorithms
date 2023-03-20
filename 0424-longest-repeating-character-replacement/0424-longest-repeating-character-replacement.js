@@ -18,5 +18,5 @@ var characterReplacement = function(s, k) {
       left += 1;
     }
   }
-  return count.reduce((a, b) => a + b, 0);
+  return right - left;
 };
