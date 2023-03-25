@@ -4,15 +4,18 @@
  */
 var isValid = function(s) {
   const stack = [];
-  const opening = ['[', '{', '('];
-  const closing = [']', '}', ')']
+  const map = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+  };
   for (let i = 0; i < s.length; i += 1) {
-    if (closing.includes(s[i])) {
-      if (opening.indexOf(stack.pop()) !== closing.indexOf(s[i])) {
-        return false
-      }
-    } else {
+    if (s[i] in map) {
       stack.push(s[i]);
+      continue;
+    }
+    if (map[stack.pop()] !== s[i]) {
+      return false
     }
   }
   return !stack.length;
