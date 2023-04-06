@@ -20,5 +20,5 @@ const dfs = (root) => {
   if (!root) {
     return [];
   }
-  return [...dfs(root.left), root.val, ...dfs(root.right)]
+  return [...dfs(root.left), root.val, ...dfs(root.right)];
 }
