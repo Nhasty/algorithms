@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n, memo = n) {
+var climbStairs = function(n) {
   let a = 1;
   let b = 1;
   let fib = 1;
