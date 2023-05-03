@@ -3,12 +3,11 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = function(matrix) {
-  debugger
   const firstRowHasZeros = matrix[0].some((item) => item === 0);
   let firstColHasZeros = !matrix[0][0];
   for (let i = 1; i < matrix.length; i++) {
     firstColHasZeros = !matrix[i][0] ? true : firstColHasZeros;
-    for (let j = 1; j < matrix[0].length; j ++) {
+    for (let j = 0; j < matrix[0].length; j ++) {
       if (!matrix[i][j]) {
         matrix[0][j] = 0;
         matrix[i][0] = 0;
